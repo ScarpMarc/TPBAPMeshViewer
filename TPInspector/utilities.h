@@ -11,4 +11,10 @@ struct vertex
 	std::string other_data; //currently unknown. placeholder
 };
 
-
+union data_4bytes
+{
+	int i;
+	unsigned int ui;
+	float f;
+	char c[4];
+};
