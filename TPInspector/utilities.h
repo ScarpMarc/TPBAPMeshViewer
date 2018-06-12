@@ -1,14 +1,17 @@
 #pragma once
 
-#include <bitset> 
+#include <vector>
 
 extern bool isLittleEndian;
-unsigned int getFromCharArray(const char * I_arr);
+
+int findVertices(int argc, char** argv);
+
+//unsigned int getFromCharArray(const char * I_arr);
 
 struct vertex
 {
 	float x, y, z;
-	std::string other_data; //currently unknown. placeholder
+	std::vector<unsigned int> other_data; //currently unknown. placeholder
 };
 
 union data_4bytes
@@ -18,3 +21,6 @@ union data_4bytes
 	float f;
 	char c[4];
 };
+
+extern std::vector<vertex> vertices;
+
