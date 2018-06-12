@@ -14,6 +14,11 @@ struct vertex
 	std::vector<unsigned int> other_data; //currently unknown. placeholder
 };
 
+struct mesh
+{
+	std::vector<vertex> vertices;
+};
+
 union data_4bytes
 {
 	int i;
@@ -22,5 +27,6 @@ union data_4bytes
 	char c[4];
 };
 
-extern std::vector<vertex> vertices;
+//extern std::vector<vertex> vertices; //temp only
+extern std::vector<mesh> meshes;
 

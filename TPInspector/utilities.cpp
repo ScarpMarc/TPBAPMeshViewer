@@ -3,19 +3,19 @@
 #include <bitset>
 #include <fstream>
 
+#include <iostream>
+
 using namespace std;
 
 ifstream file;
-std::vector<vertex> vertices;
+//std::vector<vertex> vertices; //resized in findVertices
 
 int findVertices(int argc, char** argv)
 {
-	for (int i = 1; i < argc; ++i)
+	for (int i = 0; i < argc-1; ++i)
 	{
-		file.open(argv[1], ios::binary);
-
+		file.open(argv[i+1], ios::binary);
 		data_4bytes temp;
-		wchar_t temp4(0);
 		unsigned int vertNum(0);
 
 		file.seekg(24); //at the number of vertices
@@ -28,7 +28,7 @@ int findVertices(int argc, char** argv)
 		GET VERTEX DATA
 		*/
 
-		vertices.resize(vertNum);
+		meshes[i].vertices.resize(vertNum);
 
 		for (int j = 0; j < vertNum; ++j)
 		{
@@ -45,7 +45,7 @@ int findVertices(int argc, char** argv)
 			file.seekg((numBytesVertex - 4), ios::cur);
 			file.read(temp.c, 4);
 
-			if (temp.ui != (unsigned int)0xFFFFFFFF) return 1;//failsafe. if this occurs, it is an error
+			if (temp.ui != (unsigned int)0xFFFFFFFF) return i+1;//failsafe. if this occurs, it is an error on mesh i+1 (not 0!)
 				
 
 			/*
@@ -58,11 +58,11 @@ int findVertices(int argc, char** argv)
 			*/
 			file.seekg(currPos);
 			file.read(temp.c, 4);
-			vertices[j].x = temp.f;
+			meshes[i].vertices[j].x = temp.f;
 			file.read(temp.c, 4);
-			vertices[j].y = temp.f;
+			meshes[i].vertices[j].y = temp.f;
 			file.read(temp.c, 4);
-			vertices[j].z = temp.f;
+			meshes[i].vertices[j].z = temp.f;
 
 			/*
 			READING DATA INTO A STRING
@@ -73,9 +73,10 @@ int findVertices(int argc, char** argv)
 			while (temp.ui != (unsigned int)0xFFFFFFFF)
 			{
 				file.read(temp.c, 4);
-				vertices[j].other_data.push_back(temp.ui);
+				meshes[i].vertices[j].other_data.push_back(temp.ui);
 			}
 		}
+		file.close();
 	}
 	return 0;
 }
