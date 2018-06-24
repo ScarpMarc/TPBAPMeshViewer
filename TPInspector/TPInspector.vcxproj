@@ -152,6 +152,8 @@
     <ClInclude Include="utilities.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="facesFinder.cpp" />
+    <ClCompile Include="saveToFIle.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -160,6 +162,7 @@
     </ClCompile>
     <ClCompile Include="TPInspector.cpp" />
     <ClCompile Include="utilities.cpp" />
+    <ClCompile Include="verticesFinder.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
