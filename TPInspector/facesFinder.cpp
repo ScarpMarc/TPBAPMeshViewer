@@ -2,15 +2,17 @@
 #include "utilities.h"
 #include <fstream>
 
+#include <iostream>
+
 using namespace std;
 
-int findFaces(const int& I_numMeshes, char** I_filename)
+int findFaces(std::vector<std::string> I_filenames)
 {
 	ifstream file;
-	for (int i = 0; i < I_numMeshes; ++i)
+	for (int i = 0; i < I_filenames.size(); ++i)
 	{
 		
-		file.open(I_filename[i], std::ifstream::binary);
+		file.open(I_filenames[i], std::ifstream::binary);
 		data_4bytes temp;
 
 		file.seekg(meshes[i].face_data_offset, file.beg);//jump past the last vertex
@@ -44,6 +46,12 @@ int findFaces(const int& I_numMeshes, char** I_filename)
 				}
 			}
 		}
+		//4-byte separator
+		file.read(temp.c, 4);
+		cout <<std::hex<< "\n\n\nTEMP READ "<<temp.ui << endl;
+		file.seekg(temp.ui, ios::cur);
+		meshes[i].material_data_offset = file.tellg();
+		cout << "MTL OFFSET " << meshes[i].material_data_offset<<endl;
 		file.close();
 	}
 	return 0;

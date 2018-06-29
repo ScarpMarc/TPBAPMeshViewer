@@ -3,20 +3,22 @@
 #include <bitset>
 #include <fstream>
 
+#include <iostream>
+
 using namespace std;
 
-int findVertices(const int& I_numMeshes, char** I_filename)
+int findVertices(std::vector<std::string> I_filenames)
 {
 	ifstream file;
-	for (int i = 0; i < I_numMeshes; ++i)
+	for (int i = 0; i < I_filenames.size(); ++i)
 	{
-		file.open(I_filename[i], std::ifstream::binary);
+		file.open(I_filenames[i], std::ifstream::binary);
 		data_4bytes temp;
 
 		file.seekg(24); //at the number of vertices
+		
 		file.read(temp.c, 4); //get number of vertices
 		meshes[i].number_of_vertices = temp.i;
-
 		//get vertex data
 		meshes[i].vertices.resize(meshes[i].number_of_vertices);
 		for (unsigned int j = 0; j < meshes[i].number_of_vertices; ++j)
@@ -42,18 +44,16 @@ int findVertices(const int& I_numMeshes, char** I_filename)
 			4 bytes at a time for future use
 			should be 16 bytes.
 			*/
-			for (unsigned int k = 24; k<numBytesVertex + 1; k += 4)
+			for (unsigned int k = 24; k<numBytesVertex - 3; k += 4)
 			{
 				file.read(temp.c, 4);
 				meshes[i].vertices[j].other_data.push_back(temp.ui);
 			}
-			if (temp.uc[3] != 0xFF)
-			{
-				meshes[i].vertices[j].isValid = false;
-				meshes[i].invalid_vertex_indices.push_back(j);
-			}
+			file.read(temp.c, 4);
+			meshes[i].vertices[j].transparency = temp.f;
 		}
 		meshes[i].face_data_offset = file.tellg();
+		cout << "\n\nFACE OFFSET "<<std::hex << meshes[i].face_data_offset << endl;
 		file.close();
 	}
 	return 0;
