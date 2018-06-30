@@ -30,6 +30,15 @@
     <ClInclude Include="FILENAMEDEFS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MeshClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Offsets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -51,6 +60,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="materialsFinder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -152,12 +152,16 @@
     <ClCompile Include="materialsFinder.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClInclude Include="GameObjectClass.h" />
+    <ClInclude Include="MeshClass.h" />
+    <ClInclude Include="Offsets.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="facesFinder.cpp" />
+    <ClCompile Include="MeshClass.cpp" />
     <ClCompile Include="saveToFIle.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

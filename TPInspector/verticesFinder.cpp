@@ -1,60 +1,70 @@
 #include "stdafx.h"
-#include "utilities.h"
-#include <bitset>
-#include <fstream>
 
-#include <iostream>
+#include "utilities.h"
+#include "MeshClass.h"
 
 using namespace std;
 
-int findVertices(std::vector<std::string> I_filenames)
+void mesh::findVertices(std::streamoff i_offset)
 {
-	ifstream file;
-	for (int i = 0; i < I_filenames.size(); ++i)
+	ifstream file(file_path, std::ifstream::binary);
+	data_4bytes reader;
+	try
 	{
-		file.open(I_filenames[i], std::ifstream::binary);
-		data_4bytes temp;
+		file.seekg(i_offset); //at the number of vertices
 
-		file.seekg(24); //at the number of vertices
-		
-		file.read(temp.c, 4); //get number of vertices
-		meshes[i].number_of_vertices = temp.i;
-		//get vertex data
-		meshes[i].vertices.resize(meshes[i].number_of_vertices);
-		for (unsigned int j = 0; j < meshes[i].number_of_vertices; ++j)
+		file.read(reader.c, 4); //get number of vertices
+		number_of_vertices = reader.ui;
+	}
+	catch (exception& exc)
+	{
+		error_flag = true;
+		errors.push_back("Reading error in " + (string)__FUNCTION__ + " line " + (char)__LINE__ + "\nException thrown: "+exc.what());
+		return;
+	}
+
+	//get vertex data
+	for (unsigned int i = 0; i < number_of_vertices; ++i)
+	{
+		vertex temp;
+		try
 		{
-			file.read(temp.c, 4); //number of bytes for the vertex data
-			unsigned int numBytesVertex(temp.ui);
+			file.read(reader.c, 4); //number of bytes for the vertex data
+			temp.dim = reader.ui;
 
-			//reading vertex[j]'s coordinates
-			file.read(temp.c, 4);
-			meshes[i].vertices[j].x = temp.f;
-			file.read(temp.c, 4);
-			meshes[i].vertices[j].y = temp.f;
-			file.read(temp.c, 4);
-			meshes[i].vertices[j].z = temp.f;
-			file.read(temp.c, 4);
+			//reading vertex[i]'s coordinates
+			file.read(reader.c, 4);
+			temp.x = reader.f;
+			file.read(reader.c, 4);
+			temp.y = reader.f;
+			file.read(reader.c, 4);
+			temp.z = reader.f;
 
-			meshes[i].vertices[j].u = temp.f;
-			file.read(temp.c, 4);
-			meshes[i].vertices[j].v = pivoter(temp.f); //pivoted value!
+			file.read(reader.c, 4);
+			temp.u = reader.f;
+			file.read(reader.c, 4);
+			temp.v = pivoter(reader.f); //pivoted value!
 			/*
-			READING DATA INTO A STRING
 			file implementation is still obscure
 			4 bytes at a time for future use
-			should be 16 bytes.
 			*/
-			for (unsigned int k = 24; k<numBytesVertex - 3; k += 4)
+			for (unsigned int j = 24; j < temp.dim - 3; j += 4)
 			{
-				file.read(temp.c, 4);
-				meshes[i].vertices[j].other_data.push_back(temp.ui);
+				file.read(reader.c, 4);
+				temp.other_data.push_back(reader.ui);
 			}
-			file.read(temp.c, 4);
-			meshes[i].vertices[j].transparency = temp.f;
+
+			file.read(reader.c, 4);
+			temp.transparency = reader.f;
 		}
-		meshes[i].face_data_offset = file.tellg();
-		cout << "\n\nFACE OFFSET "<<std::hex << meshes[i].face_data_offset << endl;
-		file.close();
+		catch (exception& exc)
+		{
+			error_flag = true;
+			errors.push_back("Reading error in " + (string)__FUNCTION__ + " line " + (char)__LINE__ + "\nException thrown: " + exc.what());
+			return;
+		}
+		vertices.push_back(temp);
 	}
-	return 0;
+
+	file.close();
 }

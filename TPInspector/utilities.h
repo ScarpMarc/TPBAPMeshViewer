@@ -25,7 +25,7 @@ extern inline float pivoter(const float& I_val);
 
 //unsigned int getFromCharArray(const char * I_arr);
 
-struct vertex
+/*struct vertex
 {
 	float x, y, z;
 	float u, v;
@@ -80,7 +80,7 @@ struct mesh
 
 	std::vector<material> materials;
 	std::vector<material> used_materials;
-};
+};*/
 
 union data_4bytes
 {
@@ -91,6 +91,3 @@ union data_4bytes
 	unsigned char uc[4];
 	short s[2];
 };
-
-//extern std::vector<vertex> vertices; //temp only
-extern std::vector<mesh> meshes;
