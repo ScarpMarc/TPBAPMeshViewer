@@ -4,19 +4,7 @@
 
 extern bool isLittleEndian;
 
-const std::string master_extension(".mdb");
-
 extern float pivot; //defined in main
-
-int findVertices(std::vector<std::string> I_filenames);
-
-
-int findFaces(std::vector<std::string> I_filenames);
-int findMaterials(std::vector<std::string> I_filenames);
-int meshCleaner(std::vector<std::string> I_filenames);
-int saveOBJToFile(std::vector<std::string> I_filenames);
-int saveMTLToFile(std::vector<std::string> I_filenames);
-int saveTexturesToFile(std::vector<std::string> I_filenames);
 
 std::vector<std::string> fileFinderByExtension(const std::string& I_folder, const std::string& I_ext, const bool& I_includeSubDirs = false);
 std::string getFileExtension(const std::string& I_filename);

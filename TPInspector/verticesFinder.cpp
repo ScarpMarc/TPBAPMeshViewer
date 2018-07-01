@@ -5,26 +5,29 @@
 
 using namespace std;
 
-void mesh::findVertices(std::streamoff i_offset)
+vector<vertex> mesh::findVertices(const std::streamoff& i_offset)
 {
 	ifstream file(file_path, std::ifstream::binary);
 	data_4bytes reader;
+	unsigned int number_of_vertices_to_read;
+	vector<vertex> output;
+
 	try
 	{
 		file.seekg(i_offset); //at the number of vertices
 
 		file.read(reader.c, 4); //get number of vertices
-		number_of_vertices = reader.ui;
+		number_of_vertices_to_read = reader.ui;
 	}
 	catch (exception& exc)
 	{
 		error_flag = true;
 		errors.push_back("Reading error in " + (string)__FUNCTION__ + " line " + (char)__LINE__ + "\nException thrown: "+exc.what());
-		return;
+		return output;
 	}
 
 	//get vertex data
-	for (unsigned int i = 0; i < number_of_vertices; ++i)
+	for (unsigned int i = 0; i < number_of_vertices_to_read; ++i)
 	{
 		vertex temp;
 		try
@@ -61,10 +64,12 @@ void mesh::findVertices(std::streamoff i_offset)
 		{
 			error_flag = true;
 			errors.push_back("Reading error in " + (string)__FUNCTION__ + " line " + (char)__LINE__ + "\nException thrown: " + exc.what());
-			return;
+			return output;
 		}
-		vertices.push_back(temp);
+		output.push_back(temp);
 	}
 
 	file.close();
+
+	return output;
 }

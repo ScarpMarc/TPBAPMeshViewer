@@ -5,27 +5,29 @@
 
 using namespace std;
 
-void mesh::findFaces(std::streamoff i_offset)
+std::vector<face> mesh::findFaces(const std::streamoff& i_offset)
 {
 	ifstream file(file_path, std::ifstream::binary);
 	data_4bytes reader;
+	unsigned int number_of_faces_to_read;
+	vector<face> output;
 
 	try
 	{
 		file.seekg(i_offset, file.beg);//jump past the last vertex
 
 		file.read(reader.c, 4);//get number of faces
-		number_of_faces = reader.ui;
+		number_of_faces_to_read = reader.ui;
 	}
 	catch (exception& exc)
 	{
 		error_flag = true;
 		errors.push_back("Reading error in " + (string)__FUNCTION__ + " line " + (char)__LINE__ + "\nException thrown: " + exc.what());
-		return;
+		return output;
 	}	
 
 	//get face data
-	for (unsigned int i = 0; i < number_of_faces; ++i)
+	for (unsigned int i = 0; i < number_of_faces_to_read; ++i)
 	{
 		face temp;
 		try
@@ -40,7 +42,7 @@ void mesh::findFaces(std::streamoff i_offset)
 			temp.vertex3 = reader.s[0] + 1;
 			temp.material_n = reader.s[1] + 1;
 
-			if (temp.dim > 8) //if there are more than 8 bytes
+			if (temp.dim > 8) //if there are more than 8 bytes. failsafe
 			{
 				temp.hasMoreData = true;
 				for (unsigned int j = 8; j < temp.dim + 1; j += 4)
@@ -54,9 +56,12 @@ void mesh::findFaces(std::streamoff i_offset)
 		{
 			error_flag = true;
 			errors.push_back("Reading error in " + (string)__FUNCTION__ + " line " + (char)__LINE__ + "\nException thrown: " + exc.what());
-			return;
+			return output;
 		}
+		output.push_back(temp);
 	}
 	
 	file.close();
+
+	return output;
 }

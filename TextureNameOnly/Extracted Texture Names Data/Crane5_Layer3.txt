@@ -1,0 +1,2 @@
+arm.tga
+blue metal plate.tga
