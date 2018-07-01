@@ -50,7 +50,7 @@ public:
 	mesh(const fs::path& i_file_path) :
 		file_path(i_file_path) 
 	{
-		vertex_data_offset_HQ = O_vertices;
+		vertex_data_offset.push_back(O_vertices);
 	}
 
 	void ingest();//read from file
@@ -70,29 +70,20 @@ private:
 
 	fs::path file_path;
 
-	unsigned int number_of_faces_HQ, number_of_vertices_HQ, number_of_materials,
-		number_of_faces_LQ, number_of_vertices_LQ ;
+	std::vector<std::streamoff> vertex_data_offset;
 
-	std::streamoff vertex_data_offset_HQ;
-	std::streamoff vertex_data_offset_LQ;
-
-	std::streamoff face_data_offset_HQ;
-	std::streamoff face_data_offset_LQ;
+	std::vector<std::streamoff> face_data_offset_HQ;
 
 	std::streamoff material_data_offset;
 
-	std::streamoff collision_data_offset;
+	//std::streamoff collision_data_offset;
 
+	std::vector<std::vector<vertex>> vertices;
 
-	std::vector<vertex> vertices_HQ;
-	std::vector<vertex> vertices_LQ;
-
-	std::vector<face> faces_HQ;
-	std::vector<face> faces_LQ;
-
+	std::vector<std::vector<face>> faces;
+	
 	std::vector<material> materials;
-	std::vector<material> actually_used_materials_HQ;
-	std::vector<material> actually_used_materials_LQ;
+	std::vector<std::vector<material>> actually_used_materials;
 
 	bool error_flag = false;
 	std::vector<std::string> errors;
