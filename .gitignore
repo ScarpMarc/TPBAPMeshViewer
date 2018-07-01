@@ -11,6 +11,8 @@
 *.userprefs
 
 # Build results
+Extracted Texture Data/
+TextureNameOnly/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
