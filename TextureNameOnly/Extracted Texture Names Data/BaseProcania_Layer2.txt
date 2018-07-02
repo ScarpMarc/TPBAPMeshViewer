@@ -1,8 +1,0 @@
-MountV2.tga
-cruiser rail.tga
-d_front_gun.tga
-o_gate1.tga
-o_gate13.tga
-o_gate2.tga
-o_main_body.tga
-submarine rivets.tga
