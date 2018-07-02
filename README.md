@@ -2,6 +2,7 @@
 Mesh opener for Treasure Planet: Battle at Procyon 
 
 This program can open and convert .mdb mesh files.
+WARNING: this file type is still being reverse-engineered. It may loop indefinitely on some files.
 
 It has to be run via CMD or PowerShell.
 1. Place the converter in your BD_Meshes folder, or copy some meshes into the converter's folder 
