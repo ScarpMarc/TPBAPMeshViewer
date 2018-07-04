@@ -305,6 +305,7 @@
   <ItemGroup>
     <ClInclude Include="CMDDEFS.h" />
     <ClInclude Include="FILENAMEDEFS.h" />
+    <ClCompile Include="consoleOutput.cpp" />
     <ClCompile Include="materialsFinder.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>

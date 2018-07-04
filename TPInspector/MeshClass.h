@@ -12,7 +12,7 @@ struct vertex
 	float x, y, z;
 	float u, v;
 	float transparency;
-	std::vector<unsigned int> other_data; //currently unknown. placeholder
+	float other_data_a, other_data_b; //currently unknown. placeholder
 
 	unsigned int dim;
 };
@@ -53,6 +53,9 @@ public:
 
 	void ingest();//read from file
 	void findOffsets();
+	void DEV_saveOtherData(const fs::path& i_folder_path = exported_meshes_folder_absolute) const;
+
+	void getVertexData();
 
 	void saveToFile() const;
 	fs::path getFilePath() const;

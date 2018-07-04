@@ -68,5 +68,8 @@
     <ClCompile Include="MeshClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="consoleOutput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -133,3 +133,38 @@ void mesh::saveTextureNamesToFile(const fs::path& i_folder_path) const
 	}	
 }
 
+void mesh::DEV_saveOtherData(const fs::path& i_folder_path) const
+{
+	for (unsigned int i = 0; i < type; ++i)
+	{
+		ofstream file;
+		fs::path modifying_temp(i_folder_path);
+		fs::path saveto_path;
+
+		if (type == 1)
+		{
+			fs::create_directory(modifying_temp);
+			saveto_path = modifying_temp.string() + (string)"/" + file_path.filename().string(); // .../.../filename_i.mdb
+		}
+		else
+		{
+			modifying_temp += ((string)"/" + file_path.stem().string()); // .../exportfolder/filename/
+			fs::create_directory(modifying_temp);
+			fs::path temp_filename(file_path.stem().string() + "_" + to_string(i + 1) + file_path.extension().string()); //.../exportfolder/filename/filename_i.mdb
+			saveto_path = modifying_temp.string() + (string)"/" + temp_filename.string();
+		}
+
+		saveto_path.replace_extension(".obj");//filename_i.obj
+		file.open(saveto_path);
+
+		file << setprecision(16);
+
+		for (unsigned int j = 0; j < vertices[i].size(); ++j)
+		{
+			file << "v " << vertices[i][j].other_data_a << " " << vertices[i][j].other_data_b << endl;
+		}
+		file.close();
+	}
+
+	
+}

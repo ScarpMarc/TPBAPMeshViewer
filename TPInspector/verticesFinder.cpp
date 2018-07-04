@@ -51,11 +51,15 @@ vector<vertex> mesh::findVertices(const std::streamoff& i_offset)
 			file implementation is still obscure
 			4 bytes at a time for future use
 			*/
-			for (unsigned int j = 24; j < temp.dim - 3; j += 4)
+			file.read(reader.c, 4);
+			temp.other_data_a = reader.f;
+			file.read(reader.c, 4);
+			temp.other_data_b = reader.f;
+
+			/*for (unsigned int j = 32; j < temp.dim - 3; j += 4)
 			{
-				file.read(reader.c, 4);
-				temp.other_data.push_back(reader.ui);
-			}
+				file.seekg
+			}*/
 
 			file.read(reader.c, 4);
 			temp.transparency = reader.f;
