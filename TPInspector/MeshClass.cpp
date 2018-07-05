@@ -106,3 +106,35 @@ void mesh::findOffsets()
 	}
 	file.close();
 }
+
+vector<vector<vertex>> mesh::getVertexData() const
+{
+	vector<vector<vertex>> output;
+
+	for (int i = 0; i < type; ++i)
+	{
+		vector<vertex> temp;
+		for (int j = 0; j < vertices[i].size(); ++j)
+		{
+			temp.push_back(vertices[i][j]);
+		}
+		output.push_back(temp);
+	}
+	return output;
+}
+
+vector<vector<face>> mesh::getFaceData() const
+{
+	vector<vector<face>> output;
+
+	for (int i = 0; i < type; ++i)
+	{
+		vector<face> temp;
+		for (int j = 0; j < faces[i].size(); ++j)
+		{
+			temp.push_back(faces[i][j]);
+		}
+		output.push_back(temp);
+	}
+	return output;
+}

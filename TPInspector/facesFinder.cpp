@@ -36,10 +36,10 @@ std::vector<face> mesh::findFaces(const std::streamoff& i_offset)
 			temp.dim = reader.ui;
 
 			file.read(reader.c, 4);
-			temp.vertex1 = reader.s[0] + 1;
-			temp.vertex2 = reader.s[1] + 1;
+			temp.verticesIDs.push_back(reader.s[0] + 1);
+			temp.verticesIDs.push_back(reader.s[1] + 1);
 			file.read(reader.c, 4);
-			temp.vertex3 = reader.s[0] + 1;
+			temp.verticesIDs.push_back(reader.s[0] + 1);
 			temp.material_n = reader.s[1] + 1;
 
 			if (temp.dim > 8) //if there are more than 8 bytes. failsafe

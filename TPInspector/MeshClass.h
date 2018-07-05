@@ -9,6 +9,14 @@ namespace fs = std::experimental::filesystem;
 
 struct vertex
 {
+	std::vector<float> getCoords()
+	{
+		std::vector<float> output;
+		output.push_back(x);
+		output.push_back(y);
+		output.push_back(z);
+		return output;
+	}
 	float x, y, z;
 	float u, v;
 	float transparency;
@@ -19,7 +27,12 @@ struct vertex
 
 struct face
 {
-	unsigned short vertex1, vertex2, vertex3, material_n;
+	std::vector<unsigned short> getVerticesIDs()
+	{
+		return verticesIDs;
+	}
+	vector<unsigned short> verticesIDs;
+	unsigned short material_n;
 
 	bool hasMoreData = false;//for testing purposes
 	std::vector<unsigned int> other_data; //even if there should be nothing
@@ -55,7 +68,8 @@ public:
 	void findOffsets();
 	void DEV_saveOtherData(const fs::path& i_folder_path = exported_meshes_folder_absolute) const;
 
-	void getVertexData();
+	std::vector<std::vector<vertex>> getVertexData() const;
+	std::vector<std::vector<face>> getFaceData() const;
 
 	void saveToFile() const;
 	fs::path getFilePath() const;

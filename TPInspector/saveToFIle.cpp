@@ -58,7 +58,12 @@ void mesh::saveOBJToFile(const fs::path& i_folder_path) const
 		for (unsigned int j = 0; j < faces[i].size(); ++j) //NEEDS REWORK
 		{
 			file << "usemtl Material_" << faces[i][j].material_n << endl;
-			file << "f " << faces[i][j].vertex1 << " " << faces[i][j].vertex2 << " " << faces[i][j].vertex3 << endl;
+			file << "f ";
+			for (unsigned int k = 0; k < faces[i][j].verticesIDs.size(); ++k) //NEEDS REWORK
+			{
+				file << faces[i][j].verticesIDs[k];
+			}
+			cout << endl;
 		}
 
 		file.close();
