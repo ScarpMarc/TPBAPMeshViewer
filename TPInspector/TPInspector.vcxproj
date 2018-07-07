@@ -160,6 +160,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -174,6 +175,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -188,8 +190,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -198,6 +202,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <Version>
       </Version>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;glu32.lib;%(AdditionalLibraryDirectories);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\Programmi\Include\glew-2.1.0\lib\Release\Win32;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\lib-vc2015;E:\Programmi\Include\OpenGLUtils\common</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(TargetDir)$(ProjectName)_$(platform).exe" "$(SolutionDir)Executables\$(ProjectName)_$(platform).exe"
@@ -215,6 +221,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -233,6 +240,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -249,8 +257,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -259,6 +269,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <Version>
       </Version>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;glu32.lib;%(AdditionalLibraryDirectories);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\Programmi\Include\glew-2.1.0\lib\Release\x64;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\lib-vc2015;E:\Programmi\Include\OpenGLUtils\common</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(TargetDir)$(ProjectName)_$(platform).exe" "$(SolutionDir)Executables\$(ProjectName)_$(platform).exe"
@@ -276,6 +288,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -294,6 +307,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -305,6 +319,12 @@
   <ItemGroup>
     <ClInclude Include="CMDDEFS.h" />
     <ClInclude Include="FILENAMEDEFS.h" />
+    <ClCompile Include="..\..\..\Include\OpenGLUtils\common\shader.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:\Programmi\C++\TPInspector\TPInspector;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\Programmi\C++\TPInspector\TPInspector;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="consoleOutput.cpp" />
     <ClCompile Include="materialsFinder.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -312,6 +332,7 @@
     <ClInclude Include="GameObjectClass.h" />
     <ClInclude Include="MeshClass.h" />
     <ClInclude Include="Offsets.h" />
+    <ClInclude Include="rendering.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -320,6 +341,7 @@
   <ItemGroup>
     <ClCompile Include="facesFinder.cpp" />
     <ClCompile Include="MeshClass.cpp" />
+    <ClCompile Include="rendering.cpp" />
     <ClCompile Include="saveToFIle.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -31,7 +31,7 @@ struct face
 	{
 		return verticesIDs;
 	}
-	vector<unsigned short> verticesIDs;
+	std::vector<unsigned short> verticesIDs;
 	unsigned short material_n;
 
 	bool hasMoreData = false;//for testing purposes
@@ -70,6 +70,8 @@ public:
 
 	std::vector<std::vector<vertex>> getVertexData() const;
 	std::vector<std::vector<face>> getFaceData() const;
+
+	std::vector<float> prepare3DDataForOpenGLRendering(const unsigned int& i_sub_mesh_to_load = 0);
 
 	void saveToFile() const;
 	fs::path getFilePath() const;
