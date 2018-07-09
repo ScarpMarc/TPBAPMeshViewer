@@ -7,7 +7,7 @@
 #include <GLFW/glfw3.h>
 #include <glm.hpp>
 
-GLFWwindow* window;
+extern GLFWwindow* window;
 
 void initLibs();
 void createWindow(const std::string& i_name = "TPI Mesh Viewer");

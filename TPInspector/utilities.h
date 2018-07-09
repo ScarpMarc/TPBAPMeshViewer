@@ -2,73 +2,22 @@
 
 #include <vector>
 
+#include <experimental\filesystem>
+
+#include "MeshClass.h"
+
+namespace fs = std::experimental::filesystem;
+
+extern bool running;
+
 extern bool isLittleEndian;
 
 extern float pivot; //defined in main
 
-std::vector<std::string> fileFinderByExtension(const std::string& I_folder, const std::string& I_ext, const bool& I_includeSubDirs = false);
-std::string getFileExtension(const std::string& I_filename);
+std::vector<fs::path> fileFinderByExtension(const fs::path& I_folder, const std::string& I_ext, const bool& I_includeSubDirs = false);
+std::vector<fs::path> fileFinderByExtension(const std::vector<fs::path>& I_files, const std::string& I_extension);
 
 extern inline float pivoter(const float& I_val);
-
-//unsigned int getFromCharArray(const char * I_arr);
-
-/*struct vertex
-{
-	float x, y, z;
-	float u, v;
-	float transparency;
-	std::vector<unsigned int> other_data; //currently unknown. placeholder
-	bool isValid = true;
-
-	unsigned int dim;
-};
-
-struct face
-{
-	short vertex1, vertex2, vertex3, material_n;
-	bool isValid = true;
-	bool hasMoreData = false;//for testing purposes
-	std::vector<unsigned int> other_data; //even if there should be nothing
-
-	unsigned int dim;
-};
-
-struct material
-{
-	std::string texture_name;
-	std::vector<unsigned int> other_data;
-
-	unsigned int dim;
-
-	inline bool operator< (const material& other)
-	{
-		return this->texture_name < other.texture_name;
-	}
-	inline bool operator== (const material& other)
-	{
-		return this->texture_name == other.texture_name;
-	}
-};
-
-struct mesh
-{
-	unsigned int number_of_faces, number_of_vertices, number_of_materials;
-
-	std::streamoff face_data_offset;
-	std::streamoff material_data_offset;
-	std::streamoff other_data_offset;
-
-	std::vector<vertex> vertices;
-	std::vector<int> invalid_vertex_indices;
-	std::vector<vertex> collisionData;
-
-	std::vector<face> faces;
-	std::vector<int> invalid_face_indices;
-
-	std::vector<material> materials;
-	std::vector<material> used_materials;
-};*/
 
 union data_4bytes
 {
@@ -79,3 +28,22 @@ union data_4bytes
 	unsigned char uc[4];
 	short s[2];
 };
+
+void TPI_ingestMeshes();
+void TPI_saveToFile();
+void TPI_findValidFiles(const std::string& I_extension = mesh_data_extension);
+void TPI_list(const int& I_mode);
+void TPI_changeFolder();
+void TPI_changeOutputFolder();
+
+std::vector<int> TPI_I_normalizeInput();
+
+extern std::vector<fs::path> filenames;
+extern std::vector<int> file_ids_to_convert;
+extern std::vector<int> file_ids_to_render;
+extern std::vector<int> file_ids_to_save;
+
+void removeDuplicates(std::vector<int> I_vec);
+
+extern std::vector<std::string> commands;
+extern std::vector<mesh> meshes;

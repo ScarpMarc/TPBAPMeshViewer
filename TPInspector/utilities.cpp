@@ -16,10 +16,10 @@ inline float pivoter(const float & I_val)
 	return (2 * pivot) - I_val;
 }
 
-vector<string> fileFinderByExtension(const string& I_folder, const string& I_extension, const bool& I_includeSubDirs)
+vector<fs::path> fileFinderByExtension(const fs::path& I_folder, const string& I_extension, const bool& I_includeSubDirs)
 {
 	//vector temporaneo
-	vector<string> out;
+	vector<fs::path> out;
 
 	//trova tutti gli oggetti della directory...
 	for (const fs::directory_entry& in : fs::directory_iterator(I_folder))
@@ -28,30 +28,37 @@ vector<string> fileFinderByExtension(const string& I_folder, const string& I_ext
 		if (fs::is_directory(in) && I_includeSubDirs && (in.path().filename() != exported_meshes_folder_absolute))
 		{
 			//recursione con nuova path
-			vector<string> temp(fileFinderByExtension(in.path().string(), I_extension, true));
-			for (const std::string& i : temp)
+			vector<fs::path> temp(fileFinderByExtension(in.path(), I_extension, true));
+			for (const fs::path& i : temp)
 			{
-				if (fs::is_regular_file(in) && getFileExtension(in.path().string()) == mesh_data_extension)
+				if (fs::is_regular_file(in) && in.path().extension().string() == mesh_data_extension)
 				{
 					out.push_back(i);
 				}
 			}
 		}
-		else if (fs::is_regular_file(in) && getFileExtension(in.path().string()) == mesh_data_extension)
+		else if (fs::is_regular_file(in) && (in.path().extension().string()) == mesh_data_extension)
 			out.push_back(in.path().string());
 	}
 	return out;
 }
 
-std::string getFileExtension(const std::string & I_filename)
+vector<fs::path> fileFinderByExtension(const vector<fs::path>& I_files, const string& I_extension)
 {
-	//rende l'estensione del file CON punto
-	string out(I_filename);
+	//vector temporaneo
+	vector<fs::path> out;
 
-	size_t dotPos(out.rfind('.'));
-
-	if(dotPos == string::npos) out="NOT_FOUND";
-	else out.erase(0, dotPos);
-
+	//trova tutti gli oggetti della directory...
+	for (const fs::path& in : I_files)
+	{
+		if (fs::is_regular_file(in) && in.extension().string() == mesh_data_extension)
+			out.push_back(in.string());
+	}
 	return out;
+}
+
+void removeDuplicates(vector<int> I_vec)
+{
+	sort(I_vec.begin(), I_vec.end());
+	I_vec.erase(unique(I_vec.begin(), I_vec.end()), I_vec.end());
 }

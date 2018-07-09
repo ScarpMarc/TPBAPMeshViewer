@@ -64,7 +64,7 @@ void draw(const std::vector<GLfloat>& i_3D_data)
 	glBindVertexArray(VertexArrayID);
 
 	// Create and compile our GLSL program from the shaders
-	GLuint programID = LoadShaders("HemisphericalLighting.vsh", "HemisphericalLighting.vsh");
+	GLuint programID = LoadShaders("E:\Programmi\C++\TPInspector\Shaders\SimpleVertexShader.vertexshader", "E:\Programmi\C++\TPInspector\Shaders\SimpleFragmentShader.fragmentshader");
 
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);

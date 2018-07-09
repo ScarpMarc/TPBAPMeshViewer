@@ -57,6 +57,13 @@ struct material
 	}
 };
 
+
+/// <summary>
+/// The mesh class
+/// </summary>
+/// <remarks>
+/// This class contains information on the actual mesh.
+/// </remarks>
 class mesh
 {
 public:
@@ -107,4 +114,3 @@ private:
 	bool error_flag = false;
 	std::vector<std::string> errors;
 };
-

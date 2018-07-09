@@ -39,9 +39,6 @@
     <ClInclude Include="Offsets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="rendering.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -79,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Include\OpenGLUtils\common\shader.cpp">
       <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="commandHandling.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

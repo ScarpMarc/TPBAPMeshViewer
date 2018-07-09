@@ -111,7 +111,7 @@ vector<vector<vertex>> mesh::getVertexData() const
 {
 	vector<vector<vertex>> output;
 
-	for (int i = 0; i < type; ++i)
+	for (unsigned int i = 0; i < type; ++i)
 	{
 		vector<vertex> temp;
 		for (int j = 0; j < vertices[i].size(); ++j)
@@ -127,7 +127,7 @@ vector<vector<face>> mesh::getFaceData() const
 {
 	vector<vector<face>> output;
 
-	for (int i = 0; i < type; ++i)
+	for (unsigned int i = 0; i < type; ++i)
 	{
 		vector<face> temp;
 		for (int j = 0; j < faces[i].size(); ++j)
