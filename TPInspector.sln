@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TPInspector", "TPInspector\
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		d3|x64 = d3|x64
+		d3|x86 = d3|x86
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release_x86|x64 = Release_x86|x64
@@ -17,6 +19,10 @@ Global
 		TextureNameOnly|x86 = TextureNameOnly|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.d3|x64.ActiveCfg = d3|x64
+		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.d3|x64.Build.0 = d3|x64
+		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.d3|x86.ActiveCfg = d3|Win32
+		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.d3|x86.Build.0 = d3|Win32
 		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Debug|x64.ActiveCfg = Debug|x64
 		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Debug|x64.Build.0 = Debug|x64
 		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Debug|x86.ActiveCfg = Debug|Win32

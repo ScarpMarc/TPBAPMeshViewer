@@ -145,6 +145,11 @@ void TPI_changeOutputFolder()
 {
 }
 
+/*std::vector<fs::path> generateFilenameList()
+{
+	std::vector<fs::path>;
+}*/
+
 
 ///<summary>
 ///Gets the user's input and makes it readable by the program.
@@ -152,15 +157,13 @@ void TPI_changeOutputFolder()
 ///<returns>
 ///A vector of integers with the IDs of the files to be converted. The IDs are taken from the filenames vector.
 ///</returns>
-
-vector<int> TPI_I_normalizeInput()
+vector<int> TPI_I_normalizeInput(const vector<int>& input)
 {
 	vector<int> temp;
 
 	if (commands[1] == "-all")
 	{
-		for (int i = 0; i < filenames.size(); ++i)
-			temp.push_back(i);
+		return input;
 	}
 	if (commands[1] == "-list")
 	{
@@ -176,14 +179,14 @@ vector<int> TPI_I_normalizeInput()
 				string substring;
 				size_t start_of_next_part;
 				int temp_item = stoi(commands[i], &start_of_next_part);
-				if (temp_item <= filenames.size())
+				if (temp_item <= input.size())
 				{
 					substring = commands[i].substr(start_of_next_part);
 					if (substring[0] == (char)'-')
 					{
 						commands[i].erase(0, start_of_next_part + 1); //erase the dash
 						int temp_item_end = stoi(commands[i]);//get the second number
-						if (temp_item_end <= filenames.size() && temp_item_end > temp_item) //if the 2nd number is within the range and is more than the first one
+						if (temp_item_end <= input.size() && temp_item_end > temp_item) //if the 2nd number is within the range and is more than the first one
 						{
 							for (int j = temp_item - 1; j <= temp_item_end - 1; ++j)
 							{
@@ -191,7 +194,7 @@ vector<int> TPI_I_normalizeInput()
 							}
 						}
 						else if (temp_item_end < temp_item) cout << "Error! First item bigger than the last (" << temp_item << " > " << temp_item_end << ")." << endl;
-						else if (temp_item_end > filenames.size()) cout << "Error! Out of range." << endl;
+						else if (temp_item_end > input.size()) cout << "Error! Out of range." << endl;
 					}
 					else
 					{
@@ -229,8 +232,107 @@ vector<int> TPI_I_normalizeInput()
 
 			if (fs::is_regular_file(temp_path))
 			{
+				int temp_find = input.size();
+				int temp_find_id = find(filenames.begin(), filenames.end(), temp_path) - filenames.begin();
+				if (temp_find_id != filenames.size()) temp_find = find(input.begin(), input.end(), temp_find_id) - input.begin();
+				if(temp_find != input.size()) temp.push_back(temp_find);
+			}
+			else cout << "File " << temp_path.string() << " not found." << endl;
+		}
+	}
+	return temp;
+}
+
+vector<int> TPI_I_normalizeInput(const int& input)
+{
+	vector<int> temp;
+
+	if (commands[1] == "-all")
+	{
+		for (int i = 0; i < input; ++i)
+		{
+			temp.push_back(i);
+		}
+		return temp;
+	}
+	if (commands[1] == "-list")
+	{
+		/*
+		we want something like:
+		1 4 7 9-12 15
+		or	1, 4, 7, 9-12, 15
+		*/
+		for (int i = 2; i < commands.size() - 1; ++i)
+		{
+			try
+			{
+				string substring;
+				size_t start_of_next_part;
+				int temp_item = stoi(commands[i], &start_of_next_part);
+				if (temp_item <= input)
+				{
+					substring = commands[i].substr(start_of_next_part);
+					if (substring[0] == (char)'-')
+					{
+						commands[i].erase(0, start_of_next_part + 1); //erase the dash
+						int temp_item_end = stoi(commands[i]);//get the second number
+						if (temp_item_end <= input && temp_item_end > temp_item) //if the 2nd number is within the range and is more than the first one
+						{
+							for (int j = temp_item - 1; j <= temp_item_end - 1; ++j)
+							{
+								temp.push_back(j);
+							}
+						}
+						else if (temp_item_end < temp_item) cout << "Error! First item bigger than the last (" << temp_item << " > " << temp_item_end << ")." << endl;
+						else if (temp_item_end > input) cout << "Error! Out of range." << endl;
+					}
+					else
+					{
+						temp.push_back(temp_item - 1);
+					}
+				}
+				else cout << "Error! Out of range." << endl;
+			}
+			catch (exception& exc)
+			{
+				cout << "Error! Wrong input. Was something not a number?" << endl;
+				commands.erase(commands.begin(), commands.end());
+				temp.erase(file_ids_to_convert.begin(), file_ids_to_convert.end());
+				break;
+			}
+		}
+	}
+	else
+	{
+		for (int i = 1; i < commands.size() - 1; ++i)
+		{
+			fs::path temp_path(commands[i]);
+
+			if (!temp_path.has_extension()) temp_path.replace_extension(mesh_data_extension);
+
+			if (temp_path.string()[0] == '/')
+			{
+				std::string temp_del(temp_path.string());
+				temp_del.erase(0);
+				temp_path = fs::path(temp_del);
+			}
+
+			if (temp_path.is_relative())
+				temp_path = fs::path(meshes_folder_absolute.string() + (string)"\\" + temp_path.string());
+
+			//make sure it is a file
+			if (fs::is_regular_file(temp_path))
+			{
 				int temp_find = find(filenames.begin(), filenames.end(), temp_path) - filenames.begin();
-				if(temp_find != filenames.size()) temp.push_back(temp_find);
+				//make sure it has been loaded
+				if (temp_find != filenames.size())
+				{
+					int temp_find_mesh = find(meshes.begin(), meshes.end(), mesh(temp_path)) - meshes.begin();
+					if (temp_find_mesh != meshes.size())
+					{
+						temp.push_back(temp_find);
+					}
+				}
 			}
 			else cout << "File " << temp_path.string() << " not found." << endl;
 		}

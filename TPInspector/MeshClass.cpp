@@ -4,8 +4,6 @@
 #include "MeshClass.h"
 #include <algorithm>
 
-#include <iostream>
-
 using namespace std;
 
 void mesh::tidyUp()
@@ -34,9 +32,9 @@ void mesh::ingest()
 		vertices.push_back(findVertices(vertex_data_offset[i]));
 		faces.push_back(findFaces(face_data_offset[i]));
 	}
-
 	materials = findMaterials(material_data_offset);
 	tidyUp();
+
 }
 
 fs::path mesh::getFilePath() const

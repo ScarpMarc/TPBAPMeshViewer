@@ -82,6 +82,20 @@ public:
 
 	void saveToFile() const;
 	fs::path getFilePath() const;
+
+	/*two meshes are equal if they are from the same file, 
+	
+	****OLD and to prevent
+	any problems, they must also have the same indexes (which assures they have the same type,
+	the same number of vertices, the same number of faces, etc)******
+	*/
+	inline bool operator ==(const mesh& other) const
+	{
+		return (this->file_path == other.file_path) /*&&
+			(this->vertex_data_offset == other.vertex_data_offset) &&
+			(this->face_data_offset == other.face_data_offset)*/
+			;
+	}
 	
 private:
 	std::vector<vertex> findVertices(const std::streamoff& i_offset);
