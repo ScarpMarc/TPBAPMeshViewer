@@ -31,7 +31,7 @@ void createWindow(const std::string & i_name)
 	// Open a window and create its OpenGL context
 	window = glfwCreateWindow(800, 600, i_name_c, NULL, NULL);
 	if (window == NULL) {
-		fprintf(stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n");
+		fprintf(stderr, "Failed to open GLFW window.\n");
 		getchar();
 		glfwTerminate();
 		return;
@@ -64,7 +64,7 @@ void draw(const std::vector<GLfloat>& i_3D_data)
 	glBindVertexArray(VertexArrayID);
 
 	// Create and compile our GLSL program from the shaders
-	GLuint programID = LoadShaders("E:\Programmi\C++\TPInspector\Shaders\SimpleVertexShader.vertexshader", "E:\Programmi\C++\TPInspector\Shaders\SimpleFragmentShader.fragmentshader");
+	GLuint programID = LoadShaders("E:/Programmi/C++/TPInspector/Shaders/SimpleVertexShader.vertexshader", "E:/Programmi/C++/TPInspector/Shaders/SimpleFragmentShader.fragmentshader");
 
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);
