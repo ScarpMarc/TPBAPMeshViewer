@@ -190,15 +190,17 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\glew-2.1.0\include;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\include;$(SolutionDir)Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glew-2.1.0\lib\Release\Win32;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN32\lib-vc2015;C:\Condivisione\TPInspector\TPInspector\OpenGL_Include</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='d3|Win32'">
@@ -207,15 +209,16 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\glew-2.1.0\include;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\include;$(SolutionDir)Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glew-2.1.0\lib\Release\Win32;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN32\lib-vc2015;C:\Condivisione\TPInspector\TPInspector\OpenGL_Include</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -224,15 +227,17 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\glew-2.1.0\include;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\include;$(SolutionDir)Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glew-2.1.0\lib\Release\x64;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\lib-vc2015;C:\Condivisione\TPInspector\TPInspector\OpenGL_Include</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='d3|x64'">
@@ -241,15 +246,16 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\glew-2.1.0\include;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\include;$(SolutionDir)Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glew-2.1.0\lib\Release\x64;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\lib-vc2015;C:\Condivisione\TPInspector\TPInspector\OpenGL_Include</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -260,11 +266,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC;GLEW_STATIC;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\glew-2.1.0\include;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\include;$(SolutionDir)Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
@@ -275,7 +281,7 @@
       <Version>
       </Version>
       <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;glu32.lib;%(AdditionalLibraryDirectories);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\Programmi\Include\glew-2.1.0\lib\Release\Win32;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\lib-vc2015;E:\Programmi\Include\OpenGLUtils\common</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glew-2.1.0\lib\Release\Win32;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN32\lib-vc2015;C:\Condivisione\TPInspector\TPInspector\OpenGL_Include</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(TargetDir)$(ProjectName)_$(platform).exe" "$(SolutionDir)Executables\$(ProjectName)_$(platform).exe"
@@ -291,10 +297,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\glew-2.1.0\include;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\include;$(SolutionDir)Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
@@ -302,6 +308,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glew-2.1.0\lib\Release\Win32;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN32\lib-vc2015;C:\Condivisione\TPInspector\TPInspector\OpenGL_Include</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='TextureNameOnly|Win32'">
@@ -312,10 +319,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\glew-2.1.0\include;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\include;$(SolutionDir)Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
@@ -323,6 +330,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glew-2.1.0\lib\Release\Win32;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN32\lib-vc2015;C:\Condivisione\TPInspector\TPInspector\OpenGL_Include</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -333,11 +341,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\glew-2.1.0\include;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\include;$(SolutionDir)Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
@@ -348,7 +356,7 @@
       <Version>
       </Version>
       <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;glu32.lib;%(AdditionalLibraryDirectories);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\Programmi\Include\glew-2.1.0\lib\Release\x64;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\lib-vc2015;E:\Programmi\Include\OpenGLUtils\common</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glew-2.1.0\lib\Release\x64;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\lib-vc2015;C:\Condivisione\TPInspector\TPInspector\OpenGL_Include</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(TargetDir)$(ProjectName)_$(platform).exe" "$(SolutionDir)Executables\$(ProjectName)_$(platform).exe"
@@ -364,10 +372,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\glew-2.1.0\include;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\include;$(SolutionDir)Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
@@ -375,6 +383,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glew-2.1.0\lib\Release\x64;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\lib-vc2015;C:\Condivisione\TPInspector\TPInspector\OpenGL_Include</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='TextureNameOnly|x64'">
@@ -385,10 +394,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);GLEW_STATIC;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Programmi\C++\TPInspector\Renderer\common;E:\Programmi\Include\glm\glm;E:\Programmi\Include\glfw-3.2.1.bin.WIN64\include;E:\Programmi\Include\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\glew-2.1.0\include;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\include;$(SolutionDir)Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
@@ -396,17 +405,12 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glew-2.1.0\lib\Release\x64;$(SolutionDir)Libraries\glfw-3.2.1.bin.WIN64\lib-vc2015;C:\Condivisione\TPInspector\TPInspector\OpenGL_Include</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CMDDEFS.h" />
     <ClInclude Include="FILENAMEDEFS.h" />
-    <ClCompile Include="..\..\..\Include\OpenGLUtils\common\shader.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:\Programmi\C++\TPInspector\TPInspector;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">E:\Programmi\C++\TPInspector\TPInspector;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
     <ClCompile Include="commandHandling.cpp" />
     <ClCompile Include="consoleOutput.cpp" />
     <ClCompile Include="materialsFinder.cpp">
@@ -424,6 +428,18 @@
   <ItemGroup>
     <ClCompile Include="facesFinder.cpp" />
     <ClCompile Include="MeshClass.cpp" />
+    <ClCompile Include="OpenGL_Include\shader.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='d3|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_x86|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='TextureNameOnly|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='d3|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_x86|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='TextureNameOnly|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="rendering.cpp" />
     <ClCompile Include="saveToFIle.cpp" />
     <ClCompile Include="stdafx.cpp">

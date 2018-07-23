@@ -3,7 +3,11 @@
 #include "rendering.h"
 #include "MeshClass.h"
 
-#include <E:\\Programmi\Include\OpenGLUtils\common\shader.hpp>
+#include "OpenGL_Include\shader.hpp"
+
+#include <experimental\filesystem>
+
+namespace fs = std::experimental::filesystem;
 
 using namespace glm;
 
@@ -64,7 +68,7 @@ void draw(const std::vector<GLfloat>& i_3D_data)
 	glBindVertexArray(VertexArrayID);
 
 	// Create and compile our GLSL program from the shaders
-	GLuint programID = LoadShaders("E:/Programmi/C++/TPInspector/Shaders/SimpleVertexShader.vertexshader", "E:/Programmi/C++/TPInspector/Shaders/SimpleFragmentShader.fragmentshader");
+	GLuint programID = LoadShaders(vertex_shader_path.string().c_str(), fragment_shader_path.string().c_str());
 
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);

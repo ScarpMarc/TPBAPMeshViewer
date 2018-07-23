@@ -15,3 +15,7 @@ extern fs::path meshes_folder_relative;
 extern fs::path exported_texture_file_names_folder_absolute;
 extern fs::path exported_meshes_folder_absolute;
 extern fs::path meshes_folder_absolute;
+
+
+extern fs::path vertex_shader_path;
+extern fs::path fragment_shader_path;

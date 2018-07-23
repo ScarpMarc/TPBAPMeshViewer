@@ -1,44 +1,26 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TPInspector", "TPInspector\TPInspector.vcxproj", "{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		d3|x64 = d3|x64
-		d3|x86 = d3|x86
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
-		Release_x86|x64 = Release_x86|x64
-		Release_x86|x86 = Release_x86|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-		TextureNameOnly|x64 = TextureNameOnly|x64
-		TextureNameOnly|x86 = TextureNameOnly|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.d3|x64.ActiveCfg = d3|x64
-		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.d3|x64.Build.0 = d3|x64
-		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.d3|x86.ActiveCfg = d3|Win32
-		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.d3|x86.Build.0 = d3|Win32
 		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Debug|x64.ActiveCfg = Debug|x64
 		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Debug|x64.Build.0 = Debug|x64
 		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Debug|x86.ActiveCfg = Debug|Win32
 		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Debug|x86.Build.0 = Debug|Win32
-		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Release_x86|x64.ActiveCfg = Release_x86|x64
-		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Release_x86|x64.Build.0 = Release_x86|x64
-		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Release_x86|x86.ActiveCfg = Release|Win32
-		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Release_x86|x86.Build.0 = Release|Win32
 		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Release|x64.ActiveCfg = Release|x64
 		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Release|x64.Build.0 = Release|x64
 		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Release|x86.ActiveCfg = Release|Win32
 		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.Release|x86.Build.0 = Release|Win32
-		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.TextureNameOnly|x64.ActiveCfg = TextureNameOnly|x64
-		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.TextureNameOnly|x64.Build.0 = TextureNameOnly|x64
-		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.TextureNameOnly|x86.ActiveCfg = TextureNameOnly|Win32
-		{BBAE684F-95FF-4852-8AAA-C5FEE4B6C2D1}.TextureNameOnly|x86.Build.0 = TextureNameOnly|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -74,11 +74,11 @@
     <ClCompile Include="rendering.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Include\OpenGLUtils\common\shader.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
     <ClCompile Include="commandHandling.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL_Include\shader.cpp">
+      <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
