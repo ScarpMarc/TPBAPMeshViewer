@@ -412,11 +412,6 @@
     <ClInclude Include="CMDDEFS.h" />
     <ClInclude Include="FILENAMEDEFS.h" />
     <ClCompile Include="commandHandling.cpp" />
-    <ClCompile Include="consoleOutput.cpp" />
-    <ClCompile Include="materialsFinder.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='d3|Win32'">false</ExcludedFromBuild>
-    </ClCompile>
     <ClInclude Include="GameObjectClass.h" />
     <ClInclude Include="MeshClass.h" />
     <ClInclude Include="Offsets.h" />
@@ -426,7 +421,6 @@
     <ClInclude Include="utilities.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="facesFinder.cpp" />
     <ClCompile Include="MeshClass.cpp" />
     <ClCompile Include="OpenGL_Include\shader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>

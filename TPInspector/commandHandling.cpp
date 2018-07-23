@@ -1,3 +1,22 @@
+/*
+	Treasure Planet: Battle at Procyon Inspector - mesh viewer and editor.
+
+	*** by InkySka ***
+
+	e-mail: underscore.marczero@gmail.com
+	Twitter: @InkySka
+
+	Official repository: https://github.com/InkySka/TPBAPMeshViewer
+	.mdb files info: https://treasure-planet.wikia.com/wiki/.mdb_mesh_files
+	Note: reverse-engineering is still undergoing and any help is appreciated.
+
+	Treasure Planet Wikia: https://treasure-planet.wikia.com/
+
+	(C) InkySka 2018 - published under the MIT Licence.
+
+	Command handling file: definitions for all of the commands found in main.
+*/
+
 #include "stdafx.h"
 
 #include "utilities.h"
@@ -13,29 +32,62 @@ namespace fs = std::experimental::filesystem;
 
 using namespace std;
 
+/*
+	void TPI_ingestMeshes()
+
+	Fetches all of the files in filenames using their IDs (from file_ids_to_convert).
+	It then opens their .mdb files and loads everything into RAM.
+
+	Called by: /ingest
+
+	Note: see the mesh class for information on initialization.
+*/
 void TPI_ingestMeshes()
 {
+	/*
+		Duration timer for the entire process.
+	*/
 	clock_t start = 0, end = 0;
 	double duration = 0;
 
 	start = clock();
+
 	for (unsigned int i = 0; i < file_ids_to_convert.size(); ++i)
 	{
+		/*
+			Duration timer for individual meshes.
+		*/
 		clock_t start_sub, end_sub;
 		double duration_sub;
 
+		/*
+			Creating the mesh object in the mesh vector.
+			Also displaying some info.
+		*/
 		meshes.push_back(filenames[file_ids_to_convert[i]]);
 
 		cout << "MESH " << i + 1 << " - " << meshes[i].getFilePath() << endl;
 
 		cout << "Ingesting and tidying... (can take a while)" << endl;
+
+		/*
+			Starting the timer and getting the info from the file.
+		*/
 		start_sub = clock();
 		meshes[i].findOffsets();
 		meshes[i].ingest();
+
+		/*
+			Stopping the clock and displaying some info.
+		*/
 		end_sub = clock();
 		duration_sub = (end_sub - start_sub) / (double)CLOCKS_PER_SEC;
 		cout << "Done in " << to_string(duration_sub) << " seconds" << endl << endl;
 	}
+
+	/*
+		Stopping the clock and displaying some info.
+	*/
 	end = clock();
 	duration = (end - start) / (double)CLOCKS_PER_SEC;
 
@@ -46,30 +98,59 @@ void TPI_ingestMeshes()
 	}
 }
 
+/*
+	void TPI_saveToFile()
+
+	Called by: /save -OBJ.
+
+	Saves the meshes whose IDs are in file_ids_to_convert to .OBJ and .MTL.
+*/
 void TPI_saveToFile()
 {
+	/*
+		Duration timer for the entire process.
+	*/
 	clock_t start = 0, end = 0;
 	double duration = 0;
 
+	/*
+		Creating directory.
+	*/
 	fs::create_directory(exported_texture_file_names_folder_absolute);
 	fs::create_directory(exported_meshes_folder_absolute);
 
 	start = clock();
+
 	for (unsigned int i = 0; i < file_ids_to_convert.size(); ++i)
 	{
+		/*
+			Duration timer for individual meshes.
+		*/
 		clock_t start_sub, end_sub;
 		double duration_sub;
 
+		/*
+			Starting the clock, saving and displaying some info.
+		*/
 		cout << "Mesh: " << meshes[i].getFilePath() << endl;
 
 		cout << "Saving..." << endl;
+
 		start_sub = clock();
 		meshes[i].saveToFile();
+
+		/*
+		Stopping the clock and displaying some info.
+		*/
 		end_sub = clock();
 		duration_sub = (end_sub - start_sub) / (double)CLOCKS_PER_SEC;
 		cout << "Done in " << to_string(duration_sub) << " seconds" << endl << endl;
 		cout << endl;
 	}
+
+	/*
+		Stopping the clock and displaying some info.
+	*/
 	end = clock();
 	duration = (end - start) / (double)CLOCKS_PER_SEC;
 	cout << "-----------------------" << endl;
@@ -78,12 +159,39 @@ void TPI_saveToFile()
 	cout << "Exported texture names folder: " << exported_texture_file_names_folder_absolute << endl << endl;
 }
 
+/*
+	void TPI_findValidFiles(const std::string& I_extension = mesh_data_extension);
+
+	Called by: /find.
+
+	Finds valid files in the meshes directory with the specified extension. 
+	Load file names into the filenames vector.
+*/
 void TPI_findValidFiles(const std::string & I_extension)
 {
 	filenames = fileFinderByExtension(meshes_folder_absolute, I_extension);
 	cout << "Found " << filenames.size() << " valid files (type /list to get the list)" << endl << endl;
 }
 
+/*
+	void TPI_list(const int& mode)
+
+	Called by: /list.
+
+	Lists all of the files in the specified vector (specified through mode).
+
+	Output format:
+		1. absolute_file_path
+		2. absolute_file_path
+		...
+
+	Mode:
+		0 - Files in folder (from filenames).
+		1 - Files to ingest (from filenames[file_ids_to_convert]).
+		2 - Meshes to render (from filenames[file_ids_to_render]).
+		3 - Meshes to save (from filenames[file_ids_to_save]).
+		4 - Ingested meshes (from meshes).
+*/
 void TPI_list(const int& mode)
 {
 	switch (mode)
@@ -109,9 +217,9 @@ void TPI_list(const int& mode)
 	case 2:
 	{
 		cout << "Files to be rendered: " << endl;
-		for (unsigned int i = 0; i < file_ids_to_convert.size(); ++i)
+		for (unsigned int i = 0; i < file_ids_to_render.size(); ++i)
 		{
-			cout << i + 1 << ". " << filenames[file_ids_to_convert[i]] << endl;
+			cout << i + 1 << ". " << filenames[file_ids_to_render[i]] << endl;
 		}
 		break;
 	}
@@ -137,10 +245,12 @@ void TPI_list(const int& mode)
 	}
 }
 
+//coming soon
 void TPI_changeFolder()
 {
 }
 
+//coming soon
 void TPI_changeOutputFolder()
 {
 }
@@ -151,20 +261,42 @@ void TPI_changeOutputFolder()
 }*/
 
 
-///<summary>
-///Gets the user's input and makes it readable by the program.
-///</summary>
-///<returns>
-///A vector of integers with the IDs of the files to be converted. The IDs are taken from the filenames vector.
-///</returns>
+/*
+	OVERLOADED vector<int> TPI_I_normalizeInput(const vector<int>& input) OPERATES ON THE FILENAMES VECTOR.
+	OVERLOADED vector<int> TPI_I_normalizeInput(const int& input, const int& index_to_start_from) OPERATES ON THE MESHES VECTOR.
+
+	WARNING: the first overload (TPI_I_normalizeInput(const vector<int>& input)) has to be used
+		ONLY TO INGEST FILES because it only checks if they have been found. 
+		The second overload also checks if they have been loaded into memory.
+		
+	a.k.a. list generator.
+
+	Called by: all of the commands that require a list.
+
+	Commands accepted: see in MAIN.
+
+	Takes an INT vector and outputs an INT vector with the selected files.
+
+	Note: this function is utterly overcomplicated, and one of the most cryptic.
+		It is only used during command interpretation.
+	
+	HANDLE WITH CARE.
+*/
 vector<int> TPI_I_normalizeInput(const vector<int>& input)
 {
 	vector<int> temp;
 
+	/*
+		Return all of the items present in the input vector.
+	*/
 	if (commands[1] == "-all")
 	{
 		return input;
 	}
+
+	/*
+		Return some of the items present in the input vector using the list.
+	*/
 	if (commands[1] == "-list")
 	{
 		/*
@@ -174,6 +306,9 @@ vector<int> TPI_I_normalizeInput(const vector<int>& input)
 		*/
 		for (int i = 2; i < commands.size() - 1; ++i)
 		{
+			/*
+				String normalisation (string to int, deal with comma and dash).
+			*/
 			try
 			{
 				string substring;
@@ -214,6 +349,10 @@ vector<int> TPI_I_normalizeInput(const vector<int>& input)
 	}
 	else
 	{
+		/*
+			The user inputted some file names.
+			This makes their path absolute and searches for them in the filenames vector.
+		*/
 		for (int i = 1; i < commands.size() - 1; ++i)
 		{
 			fs::path temp_path(commands[i]);
@@ -232,6 +371,9 @@ vector<int> TPI_I_normalizeInput(const vector<int>& input)
 
 			if (fs::is_regular_file(temp_path))
 			{
+				/*
+					Checking if the file has been found.
+				*/
 				int temp_find = input.size();
 				int temp_find_id = find(filenames.begin(), filenames.end(), temp_path) - filenames.begin();
 				if (temp_find_id != filenames.size()) temp_find = find(input.begin(), input.end(), temp_find_id) - input.begin();
@@ -243,6 +385,27 @@ vector<int> TPI_I_normalizeInput(const vector<int>& input)
 	return temp;
 }
 
+/*
+	OVERLOADED vector<int> TPI_I_normalizeInput(const vector<int>& input) OPERATES ON THE FILENAMES VECTOR.
+	OVERLOADED vector<int> TPI_I_normalizeInput(const int& input, const int& index_to_start_from) OPERATES ON THE MESHES VECTOR.
+
+	WARNING: the first overload (TPI_I_normalizeInput(const vector<int>& input)) has to be used
+		ONLY TO INGEST FILES because it only checks if they have been found. 
+		The second overload also checks if they have been loaded into memory.
+		
+
+	a.k.a. list generator.
+
+	Called by: all of the commands that require a list.
+
+	Commands accepted: see in MAIN.
+
+	Takes an INT vector and outputs an INT vector with the selected files.
+
+	Note: this function is utterly overcomplicated, and one of the most cryptic.
+		It is only used during command interpretation.
+		HANDLE WITH CARE.
+*/
 vector<int> TPI_I_normalizeInput(const int& input, const int& index_to_start_from)
 {
 	vector<int> temp;

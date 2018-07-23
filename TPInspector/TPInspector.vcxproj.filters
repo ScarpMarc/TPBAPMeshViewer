@@ -56,19 +56,10 @@
     <ClCompile Include="verticesFinder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="facesFinder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="saveToFIle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="materialsFinder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MeshClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="consoleOutput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="rendering.cpp">
