@@ -19,6 +19,82 @@ void mesh::saveToFile() const
 	saveTextureNamesToFile();
 }
 
+void mesh::convertToMDB() const
+{
+	ofstream file;
+
+	file.open(file_path, std::ifstream::binary);
+
+	data_4bytes writer;
+	writer.ui = vertices[0].size();
+
+	file.write(writer.c, 4); //update number of vertices
+	for (int i = 0; i < 1; ++i)
+	{
+		try
+		{
+			//get vertex data
+			for (unsigned int j = 0; j < vertices[i].size(); ++j)
+			{
+				//file.seekp(vertex_data_offset[i], ios::beg); //at the number of vertices
+
+				
+
+				writer.ui = 32;//sizeof(vertices[i][j]) - 4;
+				file.write(writer.c, 4); //number of bytes for the vertex data
+
+				//writing the vertex's coordinates
+				writer.f = vertices[i][j].x;
+				file.write(writer.c, 4);
+				writer.f = vertices[i][j].y;
+				file.write(writer.c, 4);
+				writer.f = vertices[i][j].z;
+				file.write(writer.c, 4);
+
+				writer.f = vertices[i][j].u;
+				file.write(writer.c, 4);
+				writer.f = pivoter(vertices[i][j].v);
+				file.write(writer.c, 4);
+
+				writer.ui = 0;
+				file.write(writer.c, 4);
+				writer.ui = 0;
+				file.write(writer.c, 4);
+				//file.seekp(8, ios::cur); //ignore unknown data!
+
+				writer.f = vertices[i][j].transparency;
+				file.write(writer.c, 4);
+			}
+			for (unsigned int j = 0; j < faces[i].size(); ++j)
+			{
+				//at the number of faces
+
+				writer.ui = faces[i].size();
+
+				file.write(writer.c, 4); //update number of faces
+
+				writer.ui = 8;//sizeof(faces[i][j]) - 4;
+				file.write(writer.c, 4); //number of bytes for the face data
+
+										 //writing the face stuff
+
+				writer.s[0] = faces[i][j].verticesIDs[0];
+				writer.s[1] = faces[i][j].verticesIDs[1];
+				file.write(writer.c, 4);
+
+				writer.s[0] = faces[i][j].verticesIDs[2];
+				writer.s[1] = faces[i][j].material_n;
+				file.write(writer.c, 4);
+			}
+		}
+		catch (exception& exc)
+		{
+
+		}
+	}
+	file.close();
+}
+
 
 
 void mesh::saveOBJToFile(const fs::path& i_folder_path) const

@@ -42,6 +42,19 @@ fs::path mesh::getFilePath() const
 	return file_path;
 }
 
+void mesh::scale(const float & i_scale)
+{
+	for (unsigned int i = 0; i < type; ++i)
+	{
+		for (unsigned int j = 0; j < vertices[i].size(); ++j)
+		{
+			vertices[i][j].x *= i_scale;
+			vertices[i][j].y *= i_scale;
+			vertices[i][j].z *= i_scale;
+		}
+	}
+}
+
 void mesh::findOffsets()
 {
 	ifstream file(file_path, std::ifstream::binary);

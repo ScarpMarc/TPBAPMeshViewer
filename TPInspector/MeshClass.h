@@ -81,7 +81,10 @@ public:
 	std::vector<float> prepare3DDataForOpenGLRendering(const unsigned int& i_sub_mesh_to_load = 0);
 
 	void saveToFile() const;
+	void convertToMDB() const;
 	fs::path getFilePath() const;
+
+	void scale(const float& i_scale);
 
 	/*two meshes are equal if they are from the same file, 
 	

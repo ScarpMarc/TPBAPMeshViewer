@@ -243,11 +243,11 @@ vector<int> TPI_I_normalizeInput(const vector<int>& input)
 	return temp;
 }
 
-vector<int> TPI_I_normalizeInput(const int& input)
+vector<int> TPI_I_normalizeInput(const int& input, const int& index_to_start_from)
 {
 	vector<int> temp;
 
-	if (commands[1] == "-all")
+	if (commands[index_to_start_from] == "-all")
 	{
 		for (int i = 0; i < input; ++i)
 		{
@@ -255,14 +255,14 @@ vector<int> TPI_I_normalizeInput(const int& input)
 		}
 		return temp;
 	}
-	if (commands[1] == "-list")
+	if (commands[index_to_start_from] == "-list")
 	{
 		/*
 		we want something like:
 		1 4 7 9-12 15
 		or	1, 4, 7, 9-12, 15
 		*/
-		for (int i = 2; i < commands.size() - 1; ++i)
+		for (int i = index_to_start_from + 1; i < commands.size() - 1; ++i)
 		{
 			try
 			{

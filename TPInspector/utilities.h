@@ -38,7 +38,7 @@ void TPI_changeFolder();
 void TPI_changeOutputFolder();
 
 std::vector<int> TPI_I_normalizeInput(const std::vector<int>& input);
-std::vector<int> TPI_I_normalizeInput(const int& input);
+std::vector<int> TPI_I_normalizeInput(const int& input, const int& index_to_start_from);
 
 /*///<summary>
 ///Shows the input to screen
