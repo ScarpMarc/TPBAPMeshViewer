@@ -1,3 +1,22 @@
+/*
+	Treasure Planet: Battle at Procyon Inspector - mesh viewer and editor.
+
+	*** by InkySka ***
+
+	e-mail: underscore.marczero@gmail.com
+	Twitter: @InkySka
+
+	Official repository: https://github.com/InkySka/TPBAPMeshViewer
+	.mdb files info: https://treasure-planet.wikia.com/wiki/.mdb_mesh_files
+	Note: reverse-engineering is still undergoing and any help is appreciated.
+
+	Treasure Planet Wikia: https://treasure-planet.wikia.com/
+
+	(C) InkySka 2018 - published under the MIT Licence.
+
+	Rendering file: functions related to rendering that do not belong to the Mesh Class.
+*/
+
 #pragma once
 
 #include <string>
@@ -10,5 +29,3 @@
 extern GLFWwindow* window;
 
 void initLibs();
-void createWindow(const std::string& i_name = "TPI Mesh Viewer");
-void draw(const std::vector<float>& i_3D_data);

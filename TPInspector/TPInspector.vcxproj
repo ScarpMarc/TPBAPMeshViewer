@@ -409,7 +409,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CMDDEFS.h" />
     <ClInclude Include="FILENAMEDEFS.h" />
     <ClCompile Include="commandHandling.cpp" />
     <ClInclude Include="GameObjectClass.h" />
@@ -422,6 +421,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MeshClass.cpp" />
+    <ClCompile Include="MeshClass_3DDataParsing.cpp" />
+    <ClCompile Include="MeshClass_OffsetParsing.cpp" />
+    <ClCompile Include="MeshClass_Rendering.cpp" />
     <ClCompile Include="OpenGL_Include\shader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='d3|Win32'">NotUsing</PrecompiledHeader>
@@ -435,7 +437,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='TextureNameOnly|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="rendering.cpp" />
-    <ClCompile Include="saveToFIle.cpp" />
+    <ClCompile Include="MeshClass_Saving.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='d3|Win32'">Create</PrecompiledHeader>
@@ -450,7 +452,6 @@
     </ClCompile>
     <ClCompile Include="TPInspector.cpp" />
     <ClCompile Include="utilities.cpp" />
-    <ClCompile Include="verticesFinder.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

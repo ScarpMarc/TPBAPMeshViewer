@@ -24,9 +24,6 @@
     <ClInclude Include="utilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CMDDEFS.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FILENAMEDEFS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -53,12 +50,6 @@
     <ClCompile Include="utilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="verticesFinder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="saveToFIle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MeshClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -70,6 +61,18 @@
     </ClCompile>
     <ClCompile Include="OpenGL_Include\shader.cpp">
       <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshClass_3DDataParsing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshClass_Rendering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshClass_Saving.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshClass_OffsetParsing.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

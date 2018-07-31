@@ -1,3 +1,22 @@
+/*
+	Treasure Planet: Battle at Procyon Inspector - mesh viewer and editor.
+
+	*** by InkySka ***
+
+	e-mail: underscore.marczero@gmail.com
+	Twitter: @InkySka
+
+	Official repository: https://github.com/InkySka/TPBAPMeshViewer
+	.mdb files info: https://treasure-planet.wikia.com/wiki/.mdb_mesh_files
+	Note: reverse-engineering is still undergoing and any help is appreciated.
+
+	Treasure Planet Wikia: https://treasure-planet.wikia.com/
+
+	(C) InkySka 2018 - published under the MIT Licence.
+
+	Mesh class file.
+*/
+
 #pragma once
 #include <fstream>
 #include <vector>
@@ -9,7 +28,7 @@ namespace fs = std::experimental::filesystem;
 
 struct vertex
 {
-	std::vector<float> getCoords()
+	std::vector<float> getCoords() const
 	{
 		std::vector<float> output;
 		output.push_back(x);
@@ -27,7 +46,7 @@ struct vertex
 
 struct face
 {
-	std::vector<unsigned short> getVerticesIDs()
+	std::vector<unsigned short> getVerticesIDs() const
 	{
 		return verticesIDs;
 	}
@@ -78,11 +97,13 @@ public:
 	std::vector<std::vector<vertex>> getVertexData() const;
 	std::vector<std::vector<face>> getFaceData() const;
 
-	std::vector<float> prepare3DDataForOpenGLRendering(const unsigned int& i_sub_mesh_to_load = 0);
+	std::vector<float> prepare3DDataForOpenGLRendering(const unsigned int& i_sub_mesh_to_load = 0) const;
 
 	void saveToFile() const;
 	void convertToMDB() const;
 	fs::path getFilePath() const;
+
+	void render() const;
 
 	void scale(const float& i_scale);
 
