@@ -98,7 +98,7 @@ std::vector<face> mesh::findFaces(const std::streamoff& i_offset)
 			temp.verticesIDs.push_back(reader.s[1] + 1);
 			file.read(reader.c, 4);
 			temp.verticesIDs.push_back(reader.s[0] + 1);
-			temp.material_n = reader.s[1] + 1;
+			temp.material_n = reader.s[1];
 
 			if (temp.dim > 8) //if there are more than 8 bytes. failsafe
 			{
@@ -149,6 +149,7 @@ vector<material> mesh::findMaterials(const std::streamoff& i_offset)
 		material temp;
 		try
 		{
+			temp.id = i + 1;
 			file.read(reader.c, 4); //number of bytes for the material data
 			temp.dim = reader.ui;
 
@@ -161,6 +162,10 @@ vector<material> mesh::findMaterials(const std::streamoff& i_offset)
 				file.read(tempChar, 1);
 				temp.texture_name += tempChar[0];
 			}
+
+			temp.texture_name.erase(temp.texture_name.rfind("."));
+			temp.texture_name += (string) ".dds";
+
 			for (unsigned int j = (numBytesStr + 4); j < temp.dim; j += 4)
 			{
 				file.read(reader.c, 4);
@@ -222,7 +227,7 @@ vector<vertex> mesh::findVertices(const std::streamoff& i_offset)
 			file.read(reader.c, 4);
 			temp.u = reader.f;
 			file.read(reader.c, 4);
-			temp.v = pivoter(reader.f); //pivoted value!
+			temp.v = reader.f; 
 										/*
 										file implementation is still obscure
 										4 bytes at a time for future use

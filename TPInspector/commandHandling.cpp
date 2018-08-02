@@ -461,6 +461,7 @@ vector<int> TPI_I_normalizeInput(const int& input, const int& index_to_start_fro
 				cout << "Error! Wrong input. Was something not a number?" << endl;
 				commands.erase(commands.begin(), commands.end());
 				temp.erase(file_ids_to_convert.begin(), file_ids_to_convert.end());
+				temp.push_back(-1);
 				break;
 			}
 		}

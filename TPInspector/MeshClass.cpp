@@ -89,7 +89,7 @@ void mesh::tidyUp()
 			*/
 			if (faces[i][j].material_n <= materials.size())
 			{
-				temp.push_back(materials[faces[i][j].material_n - 1]);
+				temp.push_back(materials[faces[i][j].material_n]);
 			}
 
 			/*

@@ -28,7 +28,7 @@ using namespace glm;
 
 void mesh::render() const
 {
-	vector<float> data_3D_temp(prepare3DDataForOpenGLRendering());
+	std::vector<float> data_3D_temp(prepare3DDataForOpenGLRendering());
 
 	const char* i_name_c = file_path.string().c_str();
 	// Open a window and create its OpenGL context

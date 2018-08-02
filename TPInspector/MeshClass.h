@@ -62,6 +62,7 @@ struct face
 struct material
 {
 	std::string texture_name;
+	unsigned int id;
 	std::vector<unsigned int> other_data;
 
 	unsigned int dim;

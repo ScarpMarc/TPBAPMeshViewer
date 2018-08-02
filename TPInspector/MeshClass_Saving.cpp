@@ -34,7 +34,7 @@ using namespace std;
 void mesh::saveToFile() const
 {
 	saveOBJToFile();
-	//saveMTLToFile();
+	saveMTLToFile();
 	saveTextureNamesToFile();
 }
 
@@ -114,8 +114,6 @@ void mesh::convertToMDB() const
 	file.close();
 }
 
-
-
 void mesh::saveOBJToFile(const fs::path& i_folder_path) const
 {
 	for (unsigned int i = 0; i < type; ++i)
@@ -142,23 +140,35 @@ void mesh::saveOBJToFile(const fs::path& i_folder_path) const
 
 		file << setprecision(16);
 
+		file << "mtllib " << file_path.relative_path().stem().string() + (string)"_" + to_string(i + 1) + (string) ".mtl" << endl << endl;
+
 		for (unsigned int j = 0; j < vertices[i].size(); ++j)
 		{
 			file << "v " << vertices[i][j].x << " " << vertices[i][j].y << " " << vertices[i][j].z << endl;
 		}
 		for (unsigned int j = 0; j < vertices[i].size(); ++j)
 		{
-			file << "vt " << vertices[i][j].u << " " << vertices[i][j].v << endl;
+			file << "vt " << vertices[i][j].u << " " << pivoter(vertices[i][j].v) << " " << 0 << endl;
 		}
+
+		unsigned short prev_material_n = 0;
 		for (unsigned int j = 0; j < faces[i].size(); ++j) //NEEDS REWORK
 		{
-			file << "usemtl Material_" << faces[i][j].material_n + 1 << endl;
+			//if (i == 0) file << "usemtl Material_" << faces[i][j].material_n << endl;
+			if (prev_material_n != materials[faces[i][j].material_n].id) file << "usemtl Material_" << materials[faces[i][j].material_n].id << endl;
+				
+			
 			file << "f ";
+
+			vector<unsigned short>::const_reverse_iterator temp(faces[i][j].verticesIDs.rbegin());
 			for (unsigned int k = 0; k < faces[i][j].verticesIDs.size(); ++k) //NEEDS REWORK
 			{
-				file << faces[i][j].verticesIDs[k] + 1;
+				file << *(temp) << "/" << *(temp) << " ";
+				++temp;
 			}
-			cout << endl;
+			file << endl;
+
+			prev_material_n = materials[faces[i][j].material_n].id;
 		}
 
 		file.close();
@@ -190,8 +200,24 @@ void mesh::saveMTLToFile(const fs::path& i_folder_path) const
 
 		file.open(saveto_path);
 
+		/*
+		newmtl Material_2
+Ka 0.200000 0.200000 0.200000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+illum 2
+Ns 8.000000
+map_Kd Asteroid broken.dds
+		*/
 		for (unsigned int j = 0; j < actually_used_materials[i].size(); ++j)
 		{
+			file << "newmtl Material_" << actually_used_materials[i][j].id << endl;
+			file << "Ka 0.200000 0.200000 0.200000" << endl
+				<< "Kd 1.000000 1.000000 1.000000" << endl
+				<< "Ks 0.000000 0.000000 0.000000" << endl;
+			file << "illum 2" << endl;
+			file << "Ns 8.000000" << endl;
+			file << "map_Kd " << actually_used_materials[i][j].texture_name << endl;
 			//wip
 		}
 
@@ -265,6 +291,4 @@ void mesh::DEV_saveOtherData(const fs::path& i_folder_path) const
 		}
 		file.close();
 	}
-
-	
 }
