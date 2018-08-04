@@ -25,7 +25,7 @@
 #include "Offsets.h"
 
 namespace fs = std::experimental::filesystem;
-
+	
 struct vertex
 {
 	std::vector<float> getCoords() const
@@ -42,6 +42,17 @@ struct vertex
 	float other_data_a, other_data_b; //currently unknown. placeholder
 
 	unsigned int dim;
+};
+
+struct animatedVertex : public vertex
+{
+	float delta_x, delta_y, delta_z;
+	unsigned short id; //relative to the master vertices vector
+};
+
+struct animation_frame
+{
+	std::vector<animatedVertex> changing_vertices;
 };
 
 struct face
@@ -63,6 +74,8 @@ struct material
 {
 	std::string texture_name;
 	unsigned int id;
+
+	float emission_r, emission_g, emission_b;
 	std::vector<unsigned int> other_data;
 
 	unsigned int dim;
@@ -126,6 +139,8 @@ private:
 	std::vector<vertex> findVertices(const std::streamoff& i_offset);
 	std::vector<face> findFaces(const std::streamoff& i_offset);
 	std::vector<material> findMaterials(const std::streamoff& i_offset);
+	std::vector<animation_frame> findAnimation(const std::streamoff& i_offset);
+
 	void saveOBJToFile(const fs::path& i_folder_path = exported_meshes_folder_absolute) const;
 	void saveMTLToFile(const fs::path& i_folder_path = exported_meshes_folder_absolute) const;
 	void saveTextureNamesToFile(const fs::path& i_folder_path = exported_texture_file_names_folder_absolute) const;
@@ -136,19 +151,17 @@ private:
 	fs::path file_path;
 
 	std::vector<std::streamoff> vertex_data_offset;
-
 	std::vector<std::streamoff> face_data_offset;
-
 	std::streamoff material_data_offset;
+	std::streamoff animation_data_offset;
 
 	//std::streamoff collision_data_offset;
 
 	std::vector<std::vector<vertex>> vertices;
-
 	std::vector<std::vector<face>> faces;
-	
 	std::vector<material> materials;
 	std::vector<std::vector<material>> actually_used_materials;
+	std::vector<animation_frame> animation_frames;
 
 	bool error_flag = false;
 	std::vector<std::string> errors;

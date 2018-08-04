@@ -33,6 +33,7 @@ using namespace std;
 
 void mesh::saveToFile() const
 {
+	cout << "Exporting..." << endl << endl;
 	saveOBJToFile();
 	saveMTLToFile();
 	saveTextureNamesToFile();

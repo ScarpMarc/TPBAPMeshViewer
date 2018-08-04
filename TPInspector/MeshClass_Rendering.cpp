@@ -33,12 +33,10 @@ void mesh::render() const
 	const char* i_name_c = file_path.string().c_str();
 	// Open a window and create its OpenGL context
 
-
 	// Open a window and create its OpenGL context
 	window = glfwCreateWindow(800, 600, i_name_c, NULL, NULL);
 	if (window == NULL) {
 		fprintf(stderr, "Failed to open GLFW window.\n");
-		getchar();
 		glfwTerminate();
 		return;
 	}
