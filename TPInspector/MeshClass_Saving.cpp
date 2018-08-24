@@ -33,7 +33,6 @@ using namespace std;
 
 void mesh::saveToFile() const
 {
-	cout << "Exporting..." << endl << endl;
 	saveOBJToFile();
 	saveMTLToFile();
 	saveTextureNamesToFile();
@@ -138,6 +137,8 @@ void mesh::saveOBJToFile(const fs::path& i_folder_path) const
 		
 		saveto_path.replace_extension(".obj");//filename_i.obj
 		file.open(saveto_path);
+
+		cout << "Exporting " << saveto_path << endl << endl;
 
 		file << setprecision(16);
 
