@@ -1,3 +1,6 @@
+# DEPRECATED
+# SEE https://github.com/InkySka/TPForm
+
 # TPBAPMeshViewer
 Mesh opener for Treasure Planet: Battle at Procyon 
 
